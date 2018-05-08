@@ -28,40 +28,54 @@ namespace CW2_Washing_Machine
             light600.BackColor = Color.LawnGreen;
             tempreadtxt.Text = temperature.ToString();
             speedreadtxt.Text = spin.ToString();
-            //tatustxt.Text = spin.ToString();
+            //statustxt.Text = spin.ToString();
             inletvalve = false;
             outletvalve = false;
+            countertimer = 0;
+
+
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000;
             timer.Enabled = false;
+            timer.Tick += new EventHandler(timer_Tick);
+
             clothesdetergentBtn.Enabled = false;
         }
 
         private void startbtn_Click(object sender, EventArgs e)
         {
+            timer.Enabled = true;
             doorlock = true;
             timer.Start();
-            timer.Tick.
-            while (countertimer < 10)
-            {
-             //   washcontroller;
-            }
-            while (countertimer < 20 && countertimer >10)
-            {
-               // rinsecontroller;
-            }
-            while (countertimer < 30 && countertimer > 20)
-            {
-               // spincontroller;
-            }
-            if (countertimer > 30)
-            {
-                countertimer = 0;
-            }
+           
+         
         }
-        public void TimerTick (object source ,ElapsedEventArgs e)
+       public void timer_Tick(object sender, EventArgs e)
         {
             countertimer++;
+          //  cycleinfo.Text = countertimer.ToString();
+
+            if (countertimer < 10)
+            {
+                //   washcontroller;
+                cycleinfo.Text = "washing";
+            }
+            else if (countertimer > 10 && countertimer < 20)
+            {
+                // rinsecontroller;
+                cycleinfo.Text = "rinseing";
+            }
+           else if (countertimer < 30 && countertimer > 20)
+            {
+                // spincontroller;
+                cycleinfo.Text = "spining";
+            }
+            else if (countertimer > 30)
+            {
+                cycleinfo.Text = "cycle finished";
+                timer.Enabled = false;
+            }
+            countertimer = 0;
         }
 
         public void washcontroller (object sender, EventArgs e)
@@ -80,6 +94,7 @@ namespace CW2_Washing_Machine
             countertimer = 0;
             inletvalve = false;
             outletvalve = true;
+            timer.Enabled = false;
         }
 
         public void spincontroller(object sender, EventArgs e)
