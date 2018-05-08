@@ -44,6 +44,7 @@ namespace CW2_Washing_Machine
 
         private void startbtn_Click(object sender, EventArgs e)
         {
+            countertimer = 0;
             timer.Enabled = true;
             doorlock = true;
             timer.Start();
@@ -75,7 +76,7 @@ namespace CW2_Washing_Machine
                 cycleinfo.Text = "cycle finished";
                 timer.Enabled = false;
             }
-            countertimer = 0;
+            
         }
 
         public void washcontroller (object sender, EventArgs e)
