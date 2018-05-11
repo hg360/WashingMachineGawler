@@ -16,3 +16,12 @@ C:\Users\crazy\Documents\1-PDE part B\Git Hub\WashingMachineGawler\CW2 Washing M
 C:\Users\crazy\Documents\1-PDE part B\Git Hub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2 Washing Machine.csproj.GenerateResource.Cache
 C:\Users\crazy\Documents\1-PDE part B\Git Hub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\bin\Debug\CW2 Washing Machine.exe
 C:\Users\crazy\Documents\1-PDE part B\Git Hub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\bin\Debug\CW2 Washing Machine.pdb
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\bin\Debug\CW2 Washing Machine.exe.config
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2 Washing Machine.exe
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2 Washing Machine.pdb
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\bin\Debug\CW2 Washing Machine.exe
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\bin\Debug\CW2 Washing Machine.pdb
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2 Washing Machine.csprojResolveAssemblyReference.cache
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2_Washing_Machine.Form1.resources
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2_Washing_Machine.Properties.Resources.resources
+C:\Users\Harry\Documents\GitHub\WashingMachineGawler\CW2 Washing Machine\CW2 Washing Machine\obj\Debug\CW2 Washing Machine.csproj.GenerateResource.Cache

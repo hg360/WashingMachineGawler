@@ -21,18 +21,15 @@ namespace CW2_Washing_Machine
         public Form1()
         {
             InitializeComponent();
-            //initialises 
+            // Sets starting parameters
             temperature = 30;
             light30.BackColor = Color.LawnGreen;
             spin = 600;
             light600.BackColor = Color.LawnGreen;
-            tempreadtxt.Text = temperature.ToString();
-            speedreadtxt.Text = spin.ToString();
-            //statustxt.Text = spin.ToString();
             inletvalve = false;
             outletvalve = false;
             countertimer = 0;
-
+            
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000;
@@ -43,8 +40,8 @@ namespace CW2_Washing_Machine
         }
 
         private void startbtn_Click(object sender, EventArgs e)
-        {
-            countertimer = 0;
+        {//requests wash to start
+            countertimer = 30; 
             timer.Enabled = true;
             doorlock = true;
             timer.Start();
@@ -53,30 +50,39 @@ namespace CW2_Washing_Machine
         }
        public void timer_Tick(object sender, EventArgs e)
         {
-            countertimer++;
-          //  cycleinfo.Text = countertimer.ToString();
-
-            if (countertimer < 10)
+            countertimer--;
+            timeinfo.Text = countertimer.ToString();
+            if (timer.Enabled == true)
             {
-                //   washcontroller;
-                cycleinfo.Text = "washing";
-            }
-            else if (countertimer > 10 && countertimer < 20)
-            {
-                // rinsecontroller;
-                cycleinfo.Text = "rinseing";
-            }
-           else if (countertimer < 30 && countertimer > 20)
-            {
-                // spincontroller;
-                cycleinfo.Text = "spining";
-            }
-            else if (countertimer > 30)
-            {
-                cycleinfo.Text = "cycle finished";
-                timer.Enabled = false;
+                tempbtn.Enabled = false;
+                spinbtn.Enabled = false;
+                doorbtn.Enabled = false;
             }
             
+            if (countertimer <= 30)
+            {
+                //   washcontroller
+                modeinfo.Text = "Washing Cycle";
+            }
+            if (countertimer <= 20)
+            {
+                // rinsecontroller
+                modeinfo.Text = "Rinsing Cycle";
+            }
+            if (countertimer <= 10)
+            {
+                // spincontroller;
+                modeinfo.Text = "Spinning Cycle";
+            }
+            if (countertimer == 0)
+            {
+                modeinfo.Text = "Run Finished";
+                tempbtn.Enabled = true;
+                spinbtn.Enabled = true;
+                doorbtn.Enabled = true;
+                timeinfo.Text = "";
+                timer.Enabled = false;
+            }
         }
 
         public void washcontroller (object sender, EventArgs e)
@@ -84,36 +90,39 @@ namespace CW2_Washing_Machine
             
             inletvalve = true;
             outletvalve = false;
-            cycleinfo.Text = " wash cycle is running";
+            modeinfo.Text = " wash cycle is running";
 
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
-        {
-            countertimer = 35;
-            cycleinfo.Text = "cancled cycle";
+        {   //cancelling any cycle
+            modeinfo.Text = "Cycle Cancelled";
             countertimer = 0;
             inletvalve = false;
             outletvalve = true;
             timer.Enabled = false;
+            tempbtn.Enabled = true;
+            spinbtn.Enabled = true;
+            doorbtn.Enabled = true;
+            timeinfo.Text = "";
         }
+
 
         public void spincontroller(object sender, EventArgs e)
         {
             inletvalve = false;
             outletvalve = true;
-            cycleinfo.Text = " spin cycle is running";
-
+            modeinfo.Text = " spin cycle is running";
         }
         public void rinsecontroller(object sender, EventArgs e)
         {
             inletvalve = true;
             outletvalve = false;
-            cycleinfo.Text = " rinse cycle is running";
+            modeinfo.Text = " rinse cycle in progress";
 
         }
         private void clothesdetergentBtn_Click(object sender, EventArgs e)
-        {
+        {   //simulating user inputing clothes and detergent
             if (clothesanddetergent == false)
             {
                 wmachine.Image = Properties.Resources.imgopenwithclothesetc;
@@ -127,12 +136,14 @@ namespace CW2_Washing_Machine
         }
 
         private void doorbtn_Click(object sender, EventArgs e)
-        {
+        {   // opening the machine door
             if ((door == false) && (clothesanddetergent == false))
             {
                 wmachine.Image = Properties.Resources.imgopendoor;
                 door = true;
                 clothesdetergentBtn.Enabled = true;
+                startbtn.Enabled = false;
+                modeinfo.Text = "Door Open";
             }
             else if ((door == false) && (clothesanddetergent == true))
 
@@ -140,6 +151,8 @@ namespace CW2_Washing_Machine
                 wmachine.Image = Properties.Resources.imgopenwithclothesetc;
                 door = true;
                 clothesdetergentBtn.Enabled = true;
+                startbtn.Enabled = false;
+                modeinfo.Text = "Door Open";
             }
 
             else if ((door == true) && (clothesanddetergent == false))
@@ -147,18 +160,24 @@ namespace CW2_Washing_Machine
                 wmachine.Image = Properties.Resources.imgdoorclosed;
                 door = false;
                 clothesdetergentBtn.Enabled = false;
+                startbtn.Enabled = true;
+                modeinfo.Text = "Door Closed";
+                
             }
             else if ((door == true) && (clothesanddetergent == true))
             {
                 wmachine.Image = Properties.Resources.imgclosedwashing;
                 door = false;
                 clothesdetergentBtn.Enabled = false;
+                startbtn.Enabled = true;
+                modeinfo.Text = "Door Closed";
             }
+
         }
 
         private void spinbtn_Click(object sender, EventArgs e)
         {
-
+            // user indicator of spin speeds and current selected spin speed
             if (spin == 800)
             {
                 light1200.BackColor = Color.LawnGreen;
@@ -179,13 +198,11 @@ namespace CW2_Washing_Machine
                 spin = 600;
                 light1200.BackColor = default(Color);
             }
-            speedreadtxt.Text = spin.ToString();
-           //tatustxt.Text = spin.ToString();
         }
 
         private void tempbtn_Click(object sender, EventArgs e)
         {
-
+            //user indication of  wash temperature
             if (temperature == 40)
             {
                 light60.BackColor = Color.LawnGreen;
@@ -206,8 +223,6 @@ namespace CW2_Washing_Machine
                 temperature = 30;
                 light60.BackColor = default(Color);
             }
-
-           tempreadtxt.Text = temperature.ToString() ;
         }
     }
 }
